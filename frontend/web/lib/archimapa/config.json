@@ -1,0 +1,32 @@
+{
+    "objectCustomFields": [{
+            "key": "date_built",
+            "type": "text",
+            "title": "Дата побудови"
+        }, {
+            "key": "building_type",
+            "type": "select",
+            "field_data": {
+                "options": [{
+                        "value": 1,
+                        "label": "Житловий будинок"
+                    },
+                    {
+                        "value": 2,
+                        "label": "Палац культури"
+                    },
+                    {
+                        "value": 3,
+                        "label": "Промисловий комплекс"
+                    }
+                ]
+            },
+            "title": "Тип"
+        },
+        {
+            "key": "architect",
+            "type": "text",
+            "title": "Архітектор"
+        }
+    ]
+}

@@ -1,0 +1,189 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #a64d0c;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.center {
+    text-align: center;
+}
+
+#map {
+    height: 700px;
+    width: 1000px;
+    border: 1px solid black;
+    margin: auto;
+}
+
+#map.select-point {
+    cursor: crosshair;
+}
+
+.header {
+    display: flex;
+    padding: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button {
+    color: white;
+    background-color: black;
+    border-radius: 0;
+    border: 0;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+.add-object-button {
+    font-size: 14px;
+    background-color: #ffc234;
+    color: black;
+    border: 1px solid black;
+}
+
+.add-new-object-popup {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 500;
+}
+
+.add-new-object-popup-inside {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.add-new-object-popup-overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.6;
+    position: absolute;
+}
+
+.add-new-object-popup-content {
+    left: calc(50% - 300px);
+    top: 110px;
+    position: absolute;
+    width: 600px;
+    background-color: white;
+    min-height: 300px;
+    padding: 20px;
+}
+
+.object-popup-photos {
+    display: flex;
+}
+
+.object-popup-photos>* {
+    max-width: 75px;
+}
+
+.object-popup-photos>* img {
+    max-width: 100%;
+}
+
+.some-popup {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 500;
+}
+
+.some-popup-inside {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.some-popup-overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.6;
+    position: absolute;
+}
+
+.some-popup-body {
+    left: calc(50% - 300px);
+    top: 110px;
+    position: absolute;
+    width: 600px;
+    background-color: white;
+    min-height: 300px;
+    padding: 20px;
+}
+
+.close-popup {
+    float: right;
+    cursor: pointer;
+}
+
+.please-select-point {
+    display: none;
+    background-color: orange;
+    color: black;
+    border: 1px double white;
+    font-size: 14px;
+    padding: 10px 20px;
+    opacity: 0.99;
+}
+
+.form-field {
+    padding: 10px;
+    border-bottom: 1px solid gainsboro;
+}
+
+.form-errors {
+    color: red;
+    padding: 20px;
+    text-align: center;
+    display: none;
+}
+
+.new-object-form h2 {
+    text-align: center;
+    padding: 20px 10px;
+}
+
+#notifications {
+    position: fixed;
+    margin: 30;
+}
+
+.click-on-map-overlay {
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.6;
+    position: absolute;
+}

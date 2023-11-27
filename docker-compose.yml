@@ -1,0 +1,48 @@
+version: '3'
+services:
+  php-fpm:
+    image: "andrii_kharkovyi/map"
+    env_file:
+      - ./docker/local.env
+    build:
+      context: docker/php-fpm
+    volumes:
+      - ./:/var/www
+    networks:
+      - internal
+    links:
+      - redis
+    expose:
+      - 9103
+  nginx:
+    build:
+      context: docker/nginx
+    volumes:
+      - ./:/var/www
+    ports:
+      - "80:80"
+    depends_on:
+      - php-fpm
+    networks:
+      - internal
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6378:6379"
+    expose:
+      - 6379
+    networks:
+      - internal
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    networks:
+      - internal
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default
