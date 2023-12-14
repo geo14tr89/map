@@ -7,6 +7,7 @@ use yii\caching\FileCache;
 return [
     'aliases' => [
         '@frontendRoot' => dirname(__DIR__, 2) . '/frontend/web/',
+        '@backendRoot' => dirname(__DIR__, 2) . '/backend/web/',
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
