@@ -48,8 +48,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Preview Image',
                 'format' => 'html',
                 'value' => static function ($data) {
-                    return Html::img(Yii::getAlias('@frontend') . $data['preview_url'],
-                        ['width' => '150px']);
+                    return Html::img($data['preview_url'],
+                        ['width' => '200px']);
                 },
             ],
             'full_url:ntext',

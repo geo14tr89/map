@@ -1,2 +1,2 @@
 <?php
-Yii::setAlias('@frontend', 'http://map.lol');
+Yii::setAlias('@frontend', 'frontend/web');

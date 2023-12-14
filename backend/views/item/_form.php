@@ -1,6 +1,6 @@
 <?php
 
-use common\models\Item;
+use common\components\Config;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -21,6 +21,8 @@ use yii\widgets\ActiveForm;
     <?php endif; ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'category_id')->dropDownList(Config::CATEGORY_MAP) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
