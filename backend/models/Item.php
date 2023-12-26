@@ -30,16 +30,11 @@ class Item extends \common\models\Item
     /**
      * @param int $categoryId
      * @return array
-     * @throws Exception
      */
     public static function getCategories(int $categoryId): array
     {
         $parentId = Config::getCategory($categoryId)['parent_id'];
-        $parents = self::find()->where(['category_id' => $parentId])->asArray()->all();
-        if (!empty($parents)) {
-            return $parents;
-        }
 
-        throw new Exception('Invalid category ID = ' . $parentId);
+        return self::find()->where(['category_id' => $parentId])->asArray()->all();
     }
 }

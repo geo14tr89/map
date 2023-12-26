@@ -1,6 +1,8 @@
 <?php
 
 use backend\models\search\ItemSearch;
+use common\components\Config;
+use common\models\Objects;
 use yii\grid\SerialColumn;
 use common\models\Item;
 use yii\helpers\Html;
@@ -20,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Item', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Item', ['create', 'category_id' => Yii::$app->request->get('category_id')], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -31,7 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => SerialColumn::class],
 
             'id',
-            'category_id',
+            [
+                'attribute' => 'category_id',
+                'value' => static function ($data) {
+                    return Config::CATEGORY_MAP[$data['category_id']] . " ({$data['category_id']})";
+                },
+            ],
             'title',
             [
                 'class' => ActionColumn::class,
