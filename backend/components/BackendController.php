@@ -28,10 +28,19 @@ class BackendController extends Controller
             'class' => AccessControl::class,
             'rules' => [
                 [
-                    // All actions
+                    'actions' => ['create', 'update'],
                     'allow' => true,
-                    'actions' => ['*'], // add more
+                    'roles' => ['admin'], // add more
                 ],
+                [
+                    'actions' => ['index', 'view'],
+                    'allow' => true,
+                    'roles' => ['@'], // add more
+                ],
+//                [
+//                    'allow' => true,
+//                    'roles' => ['@'], // add more
+//                ],
             ],
         ];
 

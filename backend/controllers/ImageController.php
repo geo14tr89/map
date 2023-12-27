@@ -2,38 +2,20 @@
 
 namespace backend\controllers;
 
+use backend\components\BackendController;
 use backend\models\Image;
 use backend\models\search\ImageSearch;
 use Throwable;
 use Yii;
 use yii\db\StaleObjectException;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\web\Response;
 
 /**
  * ImageController implements the CRUD actions for Image model.
  */
-class ImageController extends Controller
+class ImageController extends BackendController
 {
-    /**
-     * @inheritDoc
-     */
-    public function behaviors(): array
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
 
     /**
      * Lists all Image models.
