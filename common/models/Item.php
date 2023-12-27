@@ -13,6 +13,7 @@ use yii\db\ActiveRecord;
  * @property int|null $category_id
  * @property int|null $parent_id
  * @property string|null $title
+ * @property string|null $description
  * @property-read ActiveQuery $objectItems
  * @property-read ActiveQuery $objects
  */
@@ -35,6 +36,7 @@ class Item extends ActiveRecord
         return [
             [['category_id', 'parent_id'], 'integer'],
             [['title'], 'string', 'max' => 255],
+            [['description'], 'string', 'max' => 1000],
         ];
     }
 
@@ -48,6 +50,7 @@ class Item extends ActiveRecord
             'category_id' => 'Category',
             'parent_id' => 'Parent ID',
             'title' => 'Title',
+            'description' => 'Description',
         ];
     }
 
@@ -56,7 +59,8 @@ class Item extends ActiveRecord
         return [
             'id',
             'category_id',
-            'title'
+            'title',
+            'description'
         ];
     }
 

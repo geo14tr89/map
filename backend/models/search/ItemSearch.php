@@ -52,6 +52,7 @@ class ItemSearch extends Item
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title]);
+        $query->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

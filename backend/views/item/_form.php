@@ -44,6 +44,8 @@ if ($categoryRequestId) {
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'description')->textarea() ?>
+
     <?= $form->field($model, 'category_id')->dropDownList($categoryMap) ?>
 
     <div class="form-group">

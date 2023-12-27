@@ -40,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             'title',
+            'description',
             [
                 'class' => ActionColumn::class,
                 'contentOptions' => ['width' => '40px'],
