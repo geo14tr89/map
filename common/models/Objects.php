@@ -33,16 +33,14 @@ class Objects extends ActiveRecord
      * @param float $south
      * @param float $west
      * @param float $east
-     * @return array
+     * @return ActiveQuery
      */
-    public static function getObjectsByPolygon(float $north, float $south, float $west, float $east): array
+    public static function getObjectsByPolygon(float $north, float $south, float $west, float $east): ActiveQuery
     {
         return self::find()
             ->joinWith('images')
             ->where(['between', 'latitude', $north, $south])
-            ->orWhere(['between', 'longitude', $west, $east])
-            ->asArray()
-            ->all();
+            ->orWhere(['between', 'longitude', $west, $east]);
     }
 
     public static function getObjectsByItemId(int $itemId): array
