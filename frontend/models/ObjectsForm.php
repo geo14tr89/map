@@ -7,13 +7,13 @@ use yii\db\ActiveQuery;
 
 class ObjectsForm extends Model
 {
-    public string $north;
-    public string $south;
-    public string $west;
-    public string $east;
-    public ?string $building_type = null;
-    public ?string $architect = null;
-    public ?string $architectural_style = null;
+    public $north;
+    public $south;
+    public $west;
+    public $east;
+    public $building_type = null;
+    public $architect = null;
+    public $architectural_style = null;
 
     /**
      * @return string[]
