@@ -1,10 +1,12 @@
 <?php
 
+use backend\models\DynamicModels\CustomFieldsModel;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Objects */
+/* @var $custom_fields_model CustomFieldsModel */
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Objects', 'url' => ['index']];
@@ -33,6 +35,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 'longitude',
                 'title',
                 'description:ntext',
+            ],
+        ]) ?>
+
+        <h2>Custom Fields</h2>
+
+        <?= DetailView::widget([
+            'model' => $custom_fields_model,
+            'attributes' => [
+                'date_built',
+                'building_type',
+                'architect',
+                'architectural_style',
+                'architectural_substyle',
+                'building_subtype'
             ],
         ]) ?>
 

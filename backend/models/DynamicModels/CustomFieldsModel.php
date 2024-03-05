@@ -13,11 +13,29 @@ class CustomFieldsModel extends DynamicModel
     public $architectural_substyle = null;
     public $building_subtype = null;
 
+    /**
+     * @return array[]
+     */
     public function rules(): array
     {
         return [
             [['date_built', 'building_type', 'architect', 'architectural_style',
                 'architectural_substyle', 'building_subtype'], 'safe']
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getDefaultStructure(): array
+    {
+        return [
+            'date_built' => '',
+            'building_type' => '',
+            'architect' => '',
+            'architectural_style' => '',
+            'architectural_substyle' => '',
+            'building_subtype' => ''
         ];
     }
 }

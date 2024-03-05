@@ -23,7 +23,24 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?php
-    var_dump($custom_fields_model);
+    if (isset($custom_fields_model->date_built)) {
+        echo $form->field($custom_fields_model, 'date_built')->textInput();
+    }
+    if (isset($custom_fields_model->building_type)) {
+        echo $form->field($custom_fields_model, 'building_type')->textInput();
+    }
+    if (isset($custom_fields_model->architect)) {
+        echo $form->field($custom_fields_model, 'architect')->textInput();
+    }
+    if (isset($custom_fields_model->architectural_style)) {
+        echo $form->field($custom_fields_model, 'architectural_style')->textInput();
+    }
+    if (isset($custom_fields_model->architectural_substyle)) {
+        echo $form->field($custom_fields_model, 'architectural_substyle')->textInput();
+    }
+    if (isset($custom_fields_model->building_subtype)) {
+        echo $form->field($custom_fields_model, 'building_subtype')->textInput();
+    }
     ?>
 
     <div class="form-group">

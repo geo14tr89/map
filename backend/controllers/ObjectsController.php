@@ -49,8 +49,14 @@ class ObjectsController extends BackendController
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $customFields = Json::decode($model->custom_fields);
+        $customFieldsModel = new CustomFieldsModel();
+        $customFieldsModel->setAttributes($customFields);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'custom_fields_model' => $customFieldsModel,
         ]);
     }
 
@@ -63,8 +69,16 @@ class ObjectsController extends BackendController
     {
         $model = new Objects();
 
+        $customFieldsModel = new CustomFieldsModel();
+        $customFields = $customFieldsModel->getDefaultStructure();
+        $customFieldsModel->setAttributes($customFields);
+
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $customFieldsData = $this->request->post()['CustomFieldsModel'];
+                $model->custom_fields = Json::encode($customFieldsData);
+                $model->save();
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -73,6 +87,7 @@ class ObjectsController extends BackendController
 
         return $this->render('create', [
             'model' => $model,
+            'custom_fields_model' => $customFieldsModel,
         ]);
     }
 
@@ -87,13 +102,17 @@ class ObjectsController extends BackendController
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
         $customFields = Json::decode($model->custom_fields);
         $customFieldsModel = new CustomFieldsModel();
         $customFieldsModel->setAttributes($customFields);
+
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $customFieldsData = $this->request->post()['CustomFieldsModel'];
+            $model->custom_fields = Json::encode($customFieldsData);
+            $model->save();
+
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
 
         return $this->render('update', [
             'model' => $model,
