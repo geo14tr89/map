@@ -3,8 +3,11 @@
 namespace backend\controllers;
 
 use backend\components\BackendController;
+use backend\models\DynamicModels\CustomFieldsModel;
 use backend\models\Objects;
 use yii\data\ActiveDataProvider;
+use yii\data\ArrayDataProvider;
+use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -88,8 +91,13 @@ class ObjectsController extends BackendController
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $customFields = Json::decode($model->custom_fields);
+        $customFieldsModel = new CustomFieldsModel();
+        $customFieldsModel->setAttributes($customFields);
+
         return $this->render('update', [
             'model' => $model,
+            'custom_fields_model' => $customFieldsModel
         ]);
     }
 
